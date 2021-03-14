@@ -1,17 +1,19 @@
-import React, { useState, useCallback, useEffect } from "react"
+import React, { useState, useCallback, useEffect, FC } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getWeather } from "../../store/weatherSlice"
+import { getWeather, selectWeather } from "../../store/weatherSlice"
+import { IWeatherState, TWeatherState } from "./weather-types"
+import { TAppDispatch } from "../../store/store-types"
+import { Card } from './Card'
 import image from "../../css/weather-bg.jpg"
-import Card from "./Card"
 
-const Weather = () => {
-    const weather = useSelector(state => state.weather)
-    const dispatch = useDispatch()
-    const [res, setRes] = useState(null)
+export const Weather: FC = () => {
+    const dispatch = useDispatch<TAppDispatch>()
+    const weather = useSelector<IWeatherState, TWeatherState>(selectWeather)
+    const [res, setRes] = useState<TWeatherState | null>(null)
 
     const handleClick = useCallback(() => {
         dispatch(getWeather())
-    }, [dispatch])
+    }, [res])
 
     useEffect(() => setRes(weather), [weather])
 
@@ -21,6 +23,7 @@ const Weather = () => {
                 src={image}
                 className="bg"
                 alt=""
+                draggable={false}
             />
             <div className="weather-wrapper">
                 <div className="images-content">
@@ -29,14 +32,9 @@ const Weather = () => {
                         onClick={handleClick}>
                         Upload weather
                     </button>
-                    {res && <Card res={res}/>}
+                    {res && <Card weather={res}/>}
                 </div>
             </div>
         </div>
-
     )
 }
-
-export default Weather
-
-

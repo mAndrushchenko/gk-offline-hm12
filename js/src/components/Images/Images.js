@@ -15,7 +15,7 @@ const Images = () => {
     const handleClick = useCallback(() => {
         dispatch(getImages())
         setText('Upload another images')
-    }, [res, images])
+    }, [dispatch])
 
     useEffect(() => setRes(images),[images])
 
@@ -32,14 +32,21 @@ const Images = () => {
                     <div
                         className="images-pictures">
                         {res && data.map((item, index) => {
-                            if (index <= 8) {
-                                return <img
-                                    className="image-item"
-                                    src={item.webformatURL}
-                                    key={item.id}
-                                    alt=""
-                                />
+                           if (index <= 8) {
+                                return (
+                                    <div
+                                        className="image-box"
+                                        key={item.id}
+                                    >
+                                        <img
+                                            className="image-item"
+                                            src={item.webformatURL}
+                                            alt=""
+                                        />
+                                    </div>
+                                )
                             }
+                           return null
                         })}
                     </div>
                 </div>

@@ -9,7 +9,7 @@ const Card = ({res}) => {
 
     const kToC = useCallback((f) => {
         return Math.round(f - 273)
-    }, [res])
+    }, [])
 
     return (
         <div className="weathers-card">
