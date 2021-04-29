@@ -1,4 +1,4 @@
-body {
+body, html {
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -20,34 +20,105 @@ li {
     z-index: -1;
     background-color: #212529;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+}
+
+
+.box {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #212529;
+    max-width: 1200px;
+    height: 800px;
+}
+
+.box-images {
+    height: 900px;
+}
+
+.box-users {
+    height: 1000px;
+}
+
+.btn-wrapper {
+    margin: 20px auto;
+    position: relative;
+    width: 80%;
+    height: 40px;
+    border-radius: 10px;
+    border: #111111 2px solid;
+}
+
+.btn-wrapper-images {
+    min-width: 350px;
+    background-color: #2d2c31;
+}
+
+.btn-wrapper-users {
+    background-color: #55331b;
+}
+
+.btn-wrapper-weather {
+    background-color: #481b13;
 }
 
 .btn {
+    font-weight: bold;
+    height: 40px;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    text-shadow: 0 -2px 0 #232323, 0 1px 3px;
+    text-decoration: none;
+    border-radius: 10px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+
+    transition: top 0.3s;
+    outline: none;
     user-select: none;
     z-index: 0;
     cursor: pointer;
     font-size: 30px;
-    position: absolute;
-    height: 5%;
-    width: 80%;
-    left: 10%;
+    width: 100%;
 }
 
-.box {
-    margin: 0;
-    padding: 0;
-    background-color: #212529;
-    width: 100%;
-    height: 850px;
+.btn:active {
+    color: #fff;
+    top: -2px;
 }
+
+.btn-images {
+    color: #7e7a82;
+    background-color: #3c393f;
+    border-bottom: #b5b2b9 1px solid;
+    box-shadow: #b5b2b9 0 1px 1px ;
+}
+
+.btn-users {
+
+    color: #bc9b84;
+    background-color: #654932;
+    border-bottom: #c7a88d 1px solid;
+    box-shadow: #c7a88d 0 1px 1px ;
+}
+
+.btn-weather {
+    color: #c49174;
+    background-color: #764333;
+    border-bottom: #e3b897 1px solid;
+    box-shadow: #e3b897 0 1px 1px ;
+}
+
 
 .bg {
     padding: 0;
     margin: 1px 0;
     z-index: -1;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: 90%;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
     user-select: none;
@@ -56,35 +127,30 @@ li {
 .images-wrapper {
     position: absolute;
     top: 0;
-    left: calc(100vw / 2 - 500px);
+    left: 0;
     z-index: 1;
     height: 850px;
-    width: 1100px;
+    width: 100%;
     margin: auto;
 }
 
-
 .images-content {
+    text-align: center;
     padding: 15px;
 }
 
 .images-pictures {
-    padding-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     justify-items: center;
-}
-
-.image-box {
-    width: 350px;
-    height: 250px;
+    align-content: center;
 }
 
 .image-item {
     user-select: none;
     position: relative;
-    left: 25px;
+    left: 0;
     top: 10px;
     margin: 7px 1px;
     max-width: 300px;
@@ -93,34 +159,46 @@ li {
 }
 
 .image-item:hover {
-    position: relative;
-    left: -25px;
+    transform: scale(1.5);
     z-index: 1;
-    max-width: 420px;
-    margin: -10px;
 }
 
 .users-wrapper {
     transform-style: preserve-3d;
     overflow: hidden;
     position: absolute;
-    top: 850px;
-    left: calc(100vw / 2 - 500px);
+    top: 0;
+    left: 0;
     z-index: 1;
-    height: 850px;
-    width: 1100px;
+    height: 100%;
+    width: 100%;
     margin: auto;
+}
+
+.users-content {
+    padding: 15px 0;
+    text-align: center;
+    height: 800px;
+    width: 100%;
+}
+
+.users-cards {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 .user-item {
     backface-visibility: visible;
     background-color: rgb(93, 62, 34);
-    padding-top: 0;
     padding-bottom: 20px;
     text-align: left;
     font-size: 17px;
     color: #d8d8d8;
-    margin: 10px 10px;
     width: 340px;
     height: 110px;
     transition: 0.2s ease-in-out;
@@ -135,38 +213,25 @@ li {
     border-bottom: rgb(93, 62, 34) 8px solid;
     transform: rotateX(20deg);
     overflow: revert;
-    margin: 5px 10px;
-
-}
-
-.users-cards {
-    top: 40px;
-    padding-top: 50px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    justify-items: center;
-
 }
 
 .weather-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
     transform-style: preserve-3d;
     overflow: hidden;
-    position: absolute;
-    top: 1700px;
-    left: calc(100vw / 2 - 500px);
-    z-index: 1;
-    height: 850px;
-    width: 1100px;
+    height: 100%;
+    width: 100%;
     margin: auto;
 }
 
 .weathers-card {
     text-align: center;
     padding: 15px;
-    margin: 100px auto;
+    margin: 30px auto;
     background-color: rgba(255, 255, 255, 0.9);
-    width: 400px;
+    max-width: 400px;
     height: 550px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
 }
@@ -177,4 +242,50 @@ li {
     background-color: snow;
     user-select: none;
     width: 150px;
+}
+
+
+@media (max-width: 950px) {
+    .images-pictures {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(auto-fill, 1fr);
+    }
+
+    .box-images {
+        height: 1400px;
+    }
+
+}
+
+@media (max-width: 700px) {
+    .images-pictures {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(auto-fill, 1fr);
+    }
+
+    .box-images {
+        height: 2400px;
+    }
+
+    .box-users {
+        height: 1680px;
+    }
+
+
+    .users-content {
+        padding: 15px 0;
+        text-align: center;
+        height: 1400px;
+        width: 100%;
+    }
+
+    .users-cards {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(10, 1fr);
+        justify-items: center;
+        width: 100%;
+        height: 100%;
+    }
 }

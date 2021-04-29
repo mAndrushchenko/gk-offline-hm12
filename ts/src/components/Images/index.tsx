@@ -4,7 +4,6 @@ import { selectImage, getImages } from "../../store/imageSlice"
 import { randomImages } from "../../services/randomImages"
 import { useDispatch, useSelector } from "react-redux"
 import { TAppDispatch } from "../../store/store-types"
-import image from "../../css/image-bg.jpg"
 import { Image } from './Image'
 
 
@@ -25,20 +24,22 @@ export const Images: FC = () => {
     useEffect(() => setRes(images), [images])
 
     return (
-        <div className="box">
+        <div className="box box-images">
             <img
-                src={image}
+                src={process.env.PUBLIC_URL + '/image-bg.jpg'}
                 draggable={false}
                 className="bg bg-image"
                 alt=""
             />
             <div className="images-wrapper">
                 <div className="images-content">
-                    <button
-                        className="btn btn-images"
-                        onClick={handleClick}>
-                        {text}
-                    </button>
+                    <div className="btn-wrapper btn-wrapper-images">
+                        <button
+                            className="btn btn-images"
+                            onClick={handleClick}>
+                            {text}
+                        </button>
+                    </div>
                     <div
                         className="images-pictures">
                         {res && data.map((item: TImageState, index: number) => {

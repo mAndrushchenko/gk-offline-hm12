@@ -4,7 +4,6 @@ import { getWeather, selectWeather } from "../../store/weatherSlice"
 import { IWeatherState, TWeatherState } from "./weather-types"
 import { TAppDispatch } from "../../store/store-types"
 import { Card } from './Card'
-import image from "../../css/weather-bg.jpg"
 
 export const Weather: FC = () => {
     const dispatch = useDispatch<TAppDispatch>()
@@ -18,20 +17,22 @@ export const Weather: FC = () => {
     useEffect(() => setRes(weather), [weather])
 
     return (
-        <div className="box">
+        <div className="box box-weather">
             <img
-                src={image}
+                src={process.env.PUBLIC_URL + '/weather-bg.jpg'}
                 className="bg"
                 alt=""
                 draggable={false}
             />
             <div className="weather-wrapper">
                 <div className="images-content">
-                    <button
-                        className="btn btn-images"
-                        onClick={handleClick}>
-                        Upload weather
-                    </button>
+                    <div className="btn-wrapper btn-wrapper-weather">
+                        <button
+                            className="btn btn-weather "
+                            onClick={handleClick}>
+                            Upload weather
+                        </button>
+                    </div>
                     {res && <Card weather={res}/>}
                 </div>
             </div>
